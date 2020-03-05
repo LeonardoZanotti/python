@@ -1,0 +1,3 @@
+testar ping -->  ping -t 8.23.24.100
+
+Juntar uma pasta e uma imagem --> primeiro usa-se "CD Desktop" no cmd e dps "copy /b Fotoarquivo.jpg + "arquivo confidencial.rar" Fotoarquivo_copia.jpg"    -----> copy /b "silvio santos.jpg" + "yo no lo conosco senior.rar" "silvio santos cópia.jpg"

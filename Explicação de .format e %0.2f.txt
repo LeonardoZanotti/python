@@ -1,0 +1,11 @@
+Pia
+.format se eu não me engano serve pra identificar qual o seu tipo de string
+Aí fica mais fácil
+Se você precisasse que num deixasse de ser um float e passasse a ser um int ele iria fazer isso automaticamente
+Tipo
+Se você deixasse fixado num como um float e você desse esse comando mudando num para "num = Não sei porra" por exemplo, ele não ia funcionar
+Mas com o .format funciona
+E o rolê da area é porque é meio que uma gambiarra para determinar a quantidade de casas decimais que uma variável float vai mostrar
+Mas não tenho certeza, não programo nada para lidar com números então não sei direito
+Mas se eu não me engano é isso
+Se não tivesse aquilo ele ia te mostrar todas as casas decimais que ele tivesse de precisão

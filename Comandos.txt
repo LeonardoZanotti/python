@@ -1,0 +1,23 @@
+No cmd
+Digitar "python" para preparar o cmd
+Digitar exit()
+
+ATENÇÃO: OS COMANDOS COMO POR EXEMPLO: if, for, while, etc DEVEM SER SEMPRE MINÚSCULOS!
+mkdir (nome) --> cria pasta
+cd (nome da pasta) --> entra na pasta
+dir (nome da pasta) --> lista os itens da pasta
+python (nome do arquivo) --> abre um arquivo python (executa ele)
+print("texto") --> mostra uma mensagem de texto
+print(variável) --> mostra o valor da variável
+print(algumacoisa, outracoisa) --> mostra as duas coisas pedidas ali separadas por vírgula e espaço
+print (type(variável)) --> mostra o tipo da variável
+variável = type(variável) --> converte a variável para um tipo type (por exemplo, idade = int(idade) ou num = float(num))
+#comentário --> escreve um comentário em um texto python
+#colocar anderline ("_") entre espaços no texto python
+Caso nada seja definido em um input, ele salvará a resposta como uma variável do tipo stringe
+
+== é o = normal
+is é algo parecido com o == 
+** é o ^ pra fazer potência
+
+Se você tá usando o cmd com python 1, vc pode escolher qual python usar, é só digitar ao invés de apenas python, digitar python2 ou python3

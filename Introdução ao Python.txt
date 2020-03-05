@@ -1,0 +1,648 @@
+1 - Tipos de Objetos
+Neste artigo, iremos aprender como utilizar os mais diversos tipos de objetos que o Python dispõe, como strings, listas, dicionários e outros.
+
+1.1 - Uso de Strings
+
+No Python, strings são seqüencias imutáveis de caracteres. Eles são imutáveis devido ao fato que para se modificar uma String seja necessário a criação de outra String.
+
+>>> minhastring="Fabio Rizzo"
+>>> minhastring
+"Fabio Rizzo"
+Podemos Declarar uma String de várias formas:
+
+String="Fabio Rizzo"
+String="Fabio Rizzo"
+>>> String="""Fabio
+Rizzo
+em
+várias
+linhas
+"""
+>>> print String
+Fabio
+Rizzo
+em
+várias
+linhas
+Em Python, uma String é uma seqüencia de letras, endereçada de forma que você possa ter acesso a qualquer valor dessa seqüencia. Os endereçamentos começam a ser contados do zero.
+
+Utilizamos essa sintaxe para ter acesso a um valor em específico dentro da String:
+
+String[IS:FS:IS]
+onde IS = Inicio do endereço, FS = Fim do endereço e IS = Incremento.
+Vamos mapear os endereços da minhastring, que tem o valor Fabio Rizzo:
+
+
+
+Agora se quisermos ver o endereço dois da minhastring que tem o valor b fazemos o seguinte comando:
+
+>>> minhastring[2]
+"b"
+E se quisermos somente o nome Fabio? Devemos fazer assim:
+
+>>> minhastring[:5]
+"Fabio"
+Nesse caso nos falamos pro Python que nós queremos todos os valores até o endereço 5. Não podemos esquecer o detalhe que a o interpretador Python entende o último endereço -1. Isso significa que se quisermos todos os valores até o endereço 6 devemos fazer minhastring[:7], porque o interpretador irá pegar todos parando quando chegar no endereço 7.
+
+Para nós pegarmos somente o sobrenome Rizzo devemos fazer:
+
+>>> minhastring[6:]
+"Rizzo"
+ou
+
+>>> minhastring[6:11]
+"Rizzo"
+Ambos funcionam corretamente, somente cabendo a você, a melhor forma de utiliza-los. E se quisermos pegar todos os valores utilizando incremento de 2? Fazemos assim:
+
+>>> minhastring[::2]
+"FboRzo"
+Poderíamos pegar do 6 valor para frente incrementando em 2 também. Veja só:
+
+>>> minhastring[6::2]
+"Rzo"
+Quando não definimos qual é o ponto final na seqüencia, o interpretador Python entende que você quer toda a seqüencia. Podemos também inverter uma seqüencia:
+
+>>> minhastring[::-1]
+"ozziR oibaF"
+Utilizando o operador negativo, nós invertemos a ordem de contagem dos endereços, e o Python passa a contar ao contrário.
+
+E pegando apenas o nome Fabio ao contrário, fazemos o seguinte:
+
+>>> minhastring[4::-1]
+"oibaF"
+Podemos concatenar uma String em outra muito simplesmente, veja só:
+
+>>> sobrenome="Matos"
+>>> nomecompleto=minhastring+" "+sobrenome
+>>> print nomecompleto
+Fabio Rizzo Matos
+Vamos Detalhar essa parte do código:
+
+nomecompleto=minhastring+" "+sobrenome
+Nesse caso nós pegamos a contante nomecompleto e colocamos dentro dela os valores de minhastring, um espaço em branco e os valores de sobrenome.
+
+Lembrando que não podemos concatenar valores de String com inteiros, ou strings com qualquer outro tipo de dados sem ser String. Veja abaixo:
+
+>>> idade=int(22)
+>>> teste=nomecompleto+" "+idade
+
+Traceback (most recent call last):
+File "<pyshell#52>", line 1, in -toplevel-
+teste=nomecompleto+" "+idade
+TypeError: cannot concatenate "str" and "int" objects
+Declarei idade como inteiro e tentei concatenar o seu valor com nomecompleto. O Python retornou uma mensagem de erro, explicando que não é permitido concatenar str(String) com int(inteiro). Perceba que forçamos a idade a ser int como acima. idade=int(22). Podemos utilizar alguns métodos sobre strings como os abaixo:
+
+Método
+Para que serve
+Exemplo
+x.capitalize()
+Deixa a primeira inicial maiúscula.
+>>> x="fabio"
+>>> x.capitalize()
+
+"Fabio"
+
+x.count()
+Procura quantas ocorrências da busca existem na String.
+>>> x="fabio"
+>>> x.count("fa")
+
+1
+
+x.startswith()
+Verifica se a String inicia com determinado caractere, retornando verdadeiro ou falso.
+>>> x="fabio"
+>>> x.startswith("fa")
+
+True
+
+>>> x.startswith("ri")
+
+False
+
+x.endswith()
+Verifica se a String termina com determinado caractere, retornando verdadeiro ou falso.
+>>> x="fabio"
+>>> x.endswith("io")
+
+True
+
+>>> x.endswith("fa")
+
+False
+
+x.isalnum()
+Verifica se a String tem conteúdo alfa-numérico
+>>> x="22fabio"
+>>> x.isalnum()
+
+True
+
+x.isalpha()
+Verifica se a String tem o conteúdo apenas alfabético
+>>> x="22fabio"
+>>> x.isalpha()
+
+False
+
+>>> x="fabio"
+
+>>> x.isalpha()
+
+True
+
+x.islower()
+Verifica se a String tem o conteúdo minúsculo.
+>>> x="fabio"
+>>> x.islower()
+
+True
+
+x.isupper()
+Verifica se a String tem o conteúdo em maiúsculo
+>>> x="fabio"
+>>> x.isupper()
+
+False
+
+x.lower()
+Converte o conteúdo da String para minúsculo.
+>>> x="FABIO"
+>>> x.lower()
+
+"fabio"
+
+x.upper()
+Converte o conteúdo da String para maiúsculo.
+>>> x="fabio"
+>>> x.upper()
+
+"FABIO"
+
+x.swapcase()
+Inverte a situação da String.
+>>> x="Fabio"
+>>> x.swapcase()
+
+"fABIO"
+
+>>> x="fABIO"
+
+>>> x.swapcase()
+
+"Fabio"
+
+x.title()
+Converte para maiúscula todos os primeiros caracteres da String.
+>>> x="fabio rizzo matos"
+>>> x.title()
+
+"Fabio Rizzo Matos"
+
+“ “.join()
+Une duas ou mais strings utilizando um delimitador.
+>>> ";".join(("fabio","rizzo"))
+"fabio;rizzo"
+
+x.split()
+Corta a String em uma lista, utilizando o espaço como delimitador.
+>>> x="Fabio Rizzo Matos"
+>>> x.split()
+
+["Fabio", "Rizzo", "Matos"]
+
+x.split(“;”)
+Corta a String em uma lista, utilizando o ponto-e-vírgula como delimitador.
+>>> x="Fabio;Rizzo;Matos"
+>>> x.split(";")
+
+["Fabio", "Rizzo", "Matos"]
+
+x.ljust(tamanho)
+Ajusta a String para a esquerda utilizando um tamanho determinado.
+>>> x="Fabio"
+>>> x.ljust(10)
+
+"Fabio "
+
+x.rjust(tamanho)
+Ajusta a String para a direita utilizando um tamanho determinado.
+>>> x="Fabio"
+>>> x.rjust(10)
+
+" Fabio"
+
+x.center(tamanho)
+Ajusta a String para o centro utilizando um tamanho determinado.
+x="Fabio"
+>>> x.center(10)
+
+" Fabio "
+
+x.lstrip()
+Remove os espaços em branco do lado esquerdo de uma String.
+>>> x=" Fabio "
+>>> x.lstrip()
+
+"Fabio "
+
+x.rstrip()
+Remove os espaços em branco do lado direito de uma String.
+>>> x=" Fabio "
+>>> x.rstrip()
+
+" Fabio"
+
+x.strip()
+Remove todos os espaços em branco de uma String
+>>> x=" Fabio "
+>>> x.strip()
+
+"Fabio"
+
+x.find(parâmetro)
+Procura por uma ocorrência de determinado caractere em um String, e retorna o seu endereço dentro da String. Retornando -1 indica que não existe tal caractere na String.
+>>> x="Fabio Rizzo"
+>>> x.find("Rizzo")
+
+6
+
+>>> x.find("joao")
+
+-1
+
+x.replace(busca,substitui)
+Procura por um caractere e substitui por outro.
+>>> x.replace("Mattos","Matos")
+"Fabio Rizzo Matos"
+
+1.2 - Uso de Listas
+Lista é uma seqüencia de valores que utilizamos no Python. Listas são dinâmicas, o que possibilita adicionarmos ou removermos valores uma vez que a lista for criada.
+
+Uma lista possibilita conter valores inteiros(int), strings, float ou qualquer outro tipo de objeto. Podemos utilizar o mesmo método de mapeamento de endereços que utilizamos nas strings.
+
+
+
+>>> lista = [1,2,3]
+>>> lista
+[1, 2, 3]
+>>> lista[0]
+1
+>>> lista[-1]
+3
+Onde o endereço 0 (lista[0])da lista é 1. Podemos também pegar vários valores de uma lista e concatena-los. Ex:
+
+>>> lista[0]+lista[1]
+3 
+Nesse caso, somamos o valor do endereço 0 de lista para o valor do endereço 1 de lista. Se adicionarmos um valor diretamente a lista, retornaremos um erro, pois não é possível adicionar valores diretamente a lista, sendo necessário utilizarmos outro método.
+
+>>> lista+22
+Traceback (most recent call last):
+File "<pyshell#134>", line 1, in -toplevel-
+lista+22
+TypeError: can only concatenate list (not "int") to list
+Porém se fizermos lista+[22] adicionaremos o valor a lista.
+
+>>> lista = lista+[22]
+[1, 2, 3, 22]
+Vamos ver os valores da lista:
+
+>>> lista
+[1, 2, 3, 22]
+Também podemos utilizar o endereçamento da lista ou o método append. Por exemplo, modificar o endereço 0 que contém o valor 1 para fábio:
+
+>>> lista[0] = "Fabio"
+>>> lista
+["Fabio", 2, 3]
+Se tentarmos adicionar outro endereço utilizando endereçamento, teremos um erro, pois deveremos utilizar o append para adionar itens a lista.
+
+>>> lista[3] = "Rizzo"
+Traceback (most recent call last):
+File "<pyshell#138>", line 1, in -toplevel-
+lista[3] = "Fabio"
+IndexError: list assignment index out of range
+Agora utilizando o método append:
+
+>>> lista.append("Matos")
+>>> lista
+["Fabio", 2, 3, "Matos"]
+Existem outros métodos de adicionar valores a listas. Veja abaixo:
+
+>>> lista
+["Fabio", 2, 3, "Matos"] 
+>>> lista.insert(1,"Rizzo")
+>>> lista
+["Fabio", "Rizzo", 2, 3, "Matos"]
+Utilizando a forma acima, podemos definir em qual endereço queremos adicionar o valor desejado. No caso acima, inserimos Rizzo no endereço 1 da lista.
+
+Outro método utilizado é o extend, que é utilizado para adicionarmos mais que 1 valor, ou principalmente para adicionarmos um a lista inteira a outra lista. Veja:
+
+>>> lista = ["Fabio","Rizzo","Matos"]
+>>> lista2 = ["Azul","Preto"]
+>>> lista.extend(lista2)
+>>> lista
+["Fabio", "Rizzo", "Matos", "Azul", "Preto"]
+Se nós tivéssemos utilizado o método append nesse caso teriamos uma lista contendo outra lista. Veja:
+
+>>> lista = ["Fabio","Rizzo","Matos"]
+>>> lista.append(lista2)
+>>> lista
+["Fabio", "Rizzo", "Matos", ["Azul", "Preto"] ]
+E quando chamasse-mos o valor 3 lista, teriamos uma lista como resposta e não somente Azul:
+
+>>> lista[3]
+["Azul", "Preto"]
+>>> len(lista)
+4
+Mais com o método extend, teriamos o azul como resposta.
+
+>>> lista[3]
+"Azul"
+>>> len(lista)
+5
+Veja que o len nos mostrou valores diferentes, pois com o append a lista2 é apenas um valor dentro de uma lista diferente do extend que adiciona a lista2 como vários valores.
+
+Para removermos algum valor da lista temos alguns métodos. Veja:
+
+>>> lista
+["Fabio", "Rizzo", "Matos", "Azul", "Preto"]
+>>> lista.remove("Preto")
+>>> lista
+["Fabio", "Rizzo", "Matos", "Azul"]
+>>> lista.pop()
+"Azul"
+Dessa forma removeremos um valor que existe em nossa lista. E o método lista.pop() por default remove o ultimo valor, porém é possível adicionar um endereço a ser removido:
+
+>>> lista
+["Fabio", "Rizzo", "Matos"]
+>>> lista.pop(1)
+"Rizzo"
+>>> lista
+["Fabio", "Matos"]
+Se tentarmos remover um valor que não está na lista, teremos o seguinte retorno:
+
+>>> lista.remove("Amarelo")
+Traceback (most recent call last):
+File "<pyshell#168>", line 1, in -toplevel-
+lista.remove("Amarelo")
+ValueError: list.remove(x): x not in list
+Para saber se tal valor existe dentro de uma seqüencia, basta fazer o seguinte:
+
+>>> "Amarelo" in lista
+False
+Se o valor retornar True significa que temos o valor na lista, caso contrário teremos o valor False como acima.
+
+Agora para achar o endereço do valor dentro da lista utilizamos o método index:
+
+>>> lista
+["Fabio", "Rizzo", "Matos", "Azul"]
+>>> lista.index("Azul")
+Temos alguns outros métodos que também podem ser usados em listas:
+
+Método
+Para que serve
+Exemplo
+lista.reverse()
+Reverte a ordem dos valores de uma lista.
+>>> lista
+[1, 2, 3]
+
+>>> lista.reverse()
+
+>>> lista
+
+[3, 2, 1]
+
+lista.count(valor)
+Conta a quantidade de vezes que determinado valor esta dentro da lista.
+>>> lista.count(1)
+1
+
+>>> lista.count(4)
+
+0
+
+lista.sort()
+Coloca em ordem uma lista que esteja com seus valores bagunçados.
+>>> lista
+[3, 2, 1, 1, 3, 6, 9, 8, 7, 1, 25, 15]
+
+>>> lista.sort()
+
+>>> lista
+
+[1, 1, 1, 2, 3, 3, 6, 7, 8, 9, 15, 25]
+
+x in lista
+Verifica se o valor x esta dentro de lista. Retorna True se estiver e False caso não.
+>>> lista
+[1, 1, 1, 2, 3, 3, 6, 7, 8, 9, 15, 25]
+
+>>> 11 in lista
+
+False
+
+len(lista)
+Conta a quantidade de valores de uma lista.
+>>> lista
+[1, 1, 1, 2, 3, 3, 6, 7, 8, 9, 15, 25]
+
+>>> len(lista)
+
+12
+
+1.3 - Tuplas
+Tuplas são listas imutáveis, ou seja, não é possível modifica-la sem antes ter de criar uma nova. Um exemplo de tupla:
+
+>>> tupla = ("fabio","rizzo","matos")
+>>> tupla
+("fabio", "rizzo", "matos")
+Tuplas são mais rápidas que listas, e se você pretende ter apenas uma sequencia de valores imutáveis, utilize tuplas ao invés de listas.
+
+Tuplas não tem métodos atribuídos a ela, por isso não é possível utilizar nenhum dos métodos de listas em tuplas.
+
+1.4 - Dicionários
+
+Dicionário é um tipo de dado que permite criar uma relação entre chaves e valores. O sistema de localização dos valores fica atribuido as chaves, e é por ela que devemos procurar os valores.
+
+>>> cadastro={"Nome":"Fabio Rizzo","idade":"22"}
+>>> cadastro
+{"idade": "22", "Nome": "Fabio Rizzo"}
+No exemplo acima definimos a chave nome o valor Fabio Rizzo e a chave idade o valor 22.
+
+>>> cadastro["idade"]
+"22"
+>>> cadastro["Nome"]
+"Fabio Rizzo"
+Vimos acima como ver os valores da chave idade e da chave Nome. Para adicionarmos uma nova chave e um novo valor fazemos assim:
+
+>>> cadastro["Signo"]="Leão"
+>>> cadastro
+{"idade": "22", "Signo": "Le\xe3o", "Nome": "Fabio Rizzo"}
+Dessa forma adicionamos uma nova chave e valor ao dicionário cadastro. E para alterarmos um valor de uma determinada chave:
+
+>>> cadastro
+{"idade": "22", "Signo": "Le\xe3o", "Nome": "Fabio Rizzo"}
+>>> cadastro["Nome"]="Fabio Rizzo Matos"
+>>> cadastro
+{"idade": "22", "Signo": "Le\xe3o", "Nome": "Fabio Rizzo Matos"}
+Atento ao detalhe que os dicionários são case-sensitive, ou seja, temos que perguntar exatamente pela sua chave, senão teremos um erro. Ex:
+
+>>> cadastro["nome"]
+Traceback (most recent call last):
+File "<pyshell#14>", line 1, in -toplevel-
+cadastro["nome"]
+KeyError: "nome"
+Tivemos esse erro porque não existe chave nome e sim Nome.
+
+Para removermos uma determinada chave devemos utilizar o método del. Veja:
+
+>>> cadastro
+{"idade": "22", "Signo": "Le\xe3o", "Nome": "Fabio Rizzo Matos"}
+>>> del cadastro["Signo"]
+>>> cadastro
+{"idade": "22", "Nome": "Fabio Rizzo Matos"}
+Ou utilizar o método clear(), que elimina todas as chaves e valores de um dicionário.
+
+>>> cadastro
+{"idade": "22", "Nome": "Fabio Rizzo Matos"}
+>>> cadastro.clear()
+>>> cadastro
+{}
+Existem outros métodos que podem ser usados em dicionários. Veja abaixo:
+
+Método
+Para que serve
+Exemplo
+dicionario.keys()
+Mostra quais chave o dicionário tem.
+>>> dicionario={"Nome":"Fabio Rizzo Matos","idade":"22"}
+>>> dicionario.keys()
+
+["idade", "Nome"]
+
+dicionario.has_key(chave)
+Verifica se o dicionário tem a chave procurada.
+>>> dicionario
+{"idade": "22", "Nome": "Fabio Rizzo Matos"}
+
+>>> dicionario.has_key("Cor")
+
+False
+
+>>> dicionario["cor"]="Branca"
+
+>>> dicionario.has_key("cor")
+
+True
+
+dicionario.itens()
+Retorna uma lista de tuplas contendo chave e valor.
+>>> dicionario
+{"idade": "22", "cor": "Branca", "Nome": "Fabio Rizzo Matos"}
+
+>>> dicionario.items()
+
+[("idade", "22"), ("cor", "Branca"), ("Nome", "Fabio Rizzo Matos")]
+
+1.5 - Formatando Strings
+
+É possível formatar o valor de uma string. Veja:
+
+>>> nome="Fabio"
+>>> sobrenome="Rizzo"
+>>> print "Meu Nome é: %s, e meu sobrenome é: %s" % (nome,sobrenome)
+Meu Nome é: Fabio, e meu sobrenome é: Rizzo
+Podemos dizer que existe uma "formula" para se formatar strings. Podemos utilizar dessa forma:
+
+print "string %tipo" % variável
+Onde string é o texto a ser visualizado, %tipo é o formato do dado (explicaremos mais adiante), e % variável, é a variável que substituíra o valor de %tipo.
+
+>>> nome = "fabio"
+>>> sobrenome = "rizzo"
+>>> print sobrenome + " é o sobrenome do " + nome
+rizzo é o sobrenome do fabio
+Também podemos concatenar as strings como acima. E para formatar números utilizamos dessa forma:
+
+>>> print "O valor do sapato é: %f" % 12.57
+O valor do sapato é: 12.570000
+Ou podemos melhorar essa expressão utilizando uma variável:
+
+>>> valor=12.57
+>>> print "O valor do sapato é: %f" % valor
+O valor do sapato é: 12.570000 
+Este é um exemplo utilizando o operador Float (f). Nesse exemplo apareceram muitos zeros depois de 12.57, que podemos suprimir dessa forma:
+
+>>> print "O valor do sapato é: %.2f" % valor
+O valor do sapato é: 12.57
+Utilizando o conceito de .x podemos determinar quantas casas decimais deve aparecer o valor, como no exemplo acima somente com duas casas decimais.
+
+%.2f
+E utilizando y. Podemos determinar que o valor apareça com y caracteres.
+
+>>> print "O valor do sapato é: %10.2f" % valor
+O valor do sapato é: 12.57
+Nesse caso formatamos a string para ter dez espaços de preenchimento, mais que mostre somente duas casas decimais.
+
+Mais poderíamos colocar um sinal de + no final do valor indicando ser positivo assim:
+
+>>> print "O valor do sapato é: %+10.2f" % valor
+O valor do sapato é: +12.57
+Tipos de Formatação:
+
+Caractere(s)
+Resultado da Formatação
+Exemplo
+%s, %r
+String
+>>> nome
+"fabio"
+
+>>> print "Meu nome é %s" %nome
+
+Meu nome é fabio
+
+>>> print "Meu nome é %r" %nome
+
+Meu nome é "fabio"
+
+%i, %d
+Decimal Inteiro
+>>> idade=22
+>>> print "Minha idade é: %d" % idade
+
+Minha idade é: 22
+
+>>> print "Minha idade é: %i" % idade
+
+Minha idade é: 22
+
+%f, %F
+Decimal Floating
+>>> valor=123.69
+>>> print "Custou %f o sapato de couro" % valor
+
+Custou 123.690000 o sapato de couro
+
+>>> print "Custo %F o sapato de couro" % valor
+
+Custo 123.690000 o sapato de couro
+
+1.6 - Entrada de Dados
+
+No Python podemos fazer uma variável conter um valor digitado através de um prompt.
+
+Veja:
+
+>>> nome=raw_input("Qual o seu nome: ")
+Qual o seu nome: Fabio
+>>> nome
+"Fabio"
+Porém por padrão o raw_input sempre retorna uma string. Para não retornarmos uma string devemos converter. Veja como converter para inteiro (também poderia ser float ou outro)
+
+>>> idade=int(raw_input("Qual é a sua idade: "))
+Qual é a sua idade: 22
+>>> idade
+22
+>>> type(idade)
+<type "int">

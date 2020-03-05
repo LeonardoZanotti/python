@@ -1,0 +1,27 @@
+nomes Especifica uma lista de um ou mais arquivos ou pastas.
+Caracteres curinga podem ser usados para excluir vários
+arquivos. Se uma pasta for especificada, todos os arquivos
+dentro dela serão excluídos.
+
+/P Solicita confirmação antes de excluir cada arquivo.
+/F Força a exclusão de arquivos somente leitura.
+/S Exclui arquivos especificados de todas as subpastas.
+/Q Modo silencioso, não pede confirmação para excluir com
+caractere curinga global
+/A Seleciona arquivos a serem excluídos com base nos atributos
+atributos R Arquivos somente leitura S Arquivos do sistema
+H Arquivos ocultos A Arquivos prontos para ar
+quivamento
+
+
+Para se criar uma pasta pelo prompt de comando do seu computador basta fazer o seguinte:
+- Clique no menu Iniciar, clique em Executar, aparecerá o prompt: Digite md (nome da pasta).
+Exemplo:
+Com o exemplo acima a pasta computerdicas estará sendo criada na unidade C:\ .
+
+- Para deletar a mesma pasta basta utilizar o comando rd (nome da pasta).
+Exemplo:
+Com o comando acima a pasta computerdicas será deletada se estiver vazia. Se a pasta não estiver vazia, você deverá usar o comando rd com a opção /s :
+Exemplo:Com o comando acima, o windows perguntará se deseja deletar a pasta juntamente com os arquivos que a pasta possui. Ou se preferir ignorar a pergunta, você deve utilizar o comando /q .
+Exemplo:
+Desta maneira a pasta computerdicas será deletada juntamente com todos os seus arquivos sem que o windows faça a pergunta.
